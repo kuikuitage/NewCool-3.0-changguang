@@ -1,0 +1,4 @@
+1. ./config shared
+2. svn revert Makefile
+3. svn up -r350852 Makefile
+4. Make clean;make

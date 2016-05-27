@@ -1,0 +1,177 @@
+########################################################################
+#
+#    Copyright (c) 2008 Montage Tech - All Rights Reserved
+#    Owner: Yongmin Du <yongmin.du@montage-tech.com>
+#		 Michael Qiu <michael.qiu@montage-tech.com>
+#                   PeacerTsui  <peacer.xu@montage-tech.com>
+#
+#
+#
+##########################################################################
+
+
+
+##########################################################
+#
+#
+#                     debug option
+#
+#
+###########################################################
+
+
+ENABLE_SHOW_COMMAND = Y
+ENABLE_DEBUG_OPTION = Y
+ENABLE_PRINT_ON = N
+
+
+
+###########################################################
+#
+#                    config your os
+#
+###########################################################
+
+#compile code running on linux user space
+USE_LINUX_OS  = N
+
+USE_ECOS_OS   = N
+
+USE_UC_OS_OS   = Y
+
+#compile code running on linux kernel space
+BUILD_LINUX_KERNEL  = N
+
+
+
+
+################################################
+#
+#                  config chip
+#
+################################################
+USE_CHIP_WARRIORS = N
+
+USE_CHIP_SONATA   = N
+
+USE_CHIP_CONCERTO = Y
+
+################################################
+#
+#                  toolchain
+#
+################################################
+USE_TOOLCHAIN_MIPS4k = N
+USE_TOOLCHAIN_MIPS24k = Y
+
+
+################################################
+#
+#
+#
+#
+################################################
+
+################################################
+#
+#
+#
+#
+################################################
+
+#BUILD_OPENSSL = N
+TEST_SPEED_OPEN = Y
+ENABLE_OPEN_SSL = Y
+ENABLE_OPEN_HTTPS = Y
+
+DOWNLOAD_HTTP_NEW = Y
+########################################################################
+#  
+#  if you want player to play stream based on rtsp protocol
+#
+#          you should set ENALE_DEMUX_RTSP = Y and ENABLE_LIVE555_STREAM = Y
+#
+###############################################################################
+ENABLE_DEMUX_RTSP = Y
+ENABLE_LIVE555_STREAM  = Y
+
+
+################################################
+#
+#
+#
+#
+################################################
+ENABLE_DEMUX_HTTP   =    Y
+ENABLE_DEMUX_RTMP   =    Y
+ENABLE_DEMUX_MMS    =    Y
+
+
+###################################################
+#
+# Please set SUPPORT_ALL_DATA_PROVIDER to N if you want compile special client.
+#
+#
+#
+#########################################################
+SUPPORT_ALL_DATA_PROVIDER = Y
+
+SUPPORT_INTERNAL_OTT_DP = Y
+
+SUPPORT_NETMEDIA_DP = Y
+SUPPORT_JSON_PARSER = Y
+SUPPORT_FLICKR_DP = Y
+SUPPORT_UTIL_DP = Y
+
+SUPPORT_ZNDIPTV_DP = Y
+SUPPORT_BSWIPTV_DP = Y
+SUPPORT_DAQIVOD_DP = Y
+SUPPORT_ZGWIPTV_DP = Y
+SUPPORT_SKY_DP = Y
+SUPPORT_BSW_DP = Y
+SUPPORT_ZGWLIVE_DP = Y
+SUPPORT_ZNDLIVE_DP = Y 
+
+SUPPORT_YOUTUBE_DP = Y
+SUPPORT_REDX_DP = Y
+SUPPORT_YOUX_DP = Y
+SUPPORT_VIMEO_DP = Y
+SUPPORT_ONLINEMOVIES_DP = Y
+SUPPORT_ONLAINFILM_DP = Y
+SUPPORT_DAILYMOTION_DP = Y
+SUPPORT_ALJAZEER_DP = Y
+SUPPORT_VEOH_DP = Y
+SUPPORT_YAHOOVIDEO_DP = Y
+SUPPORT_ADDANIMATE_DP = Y
+SUPPORT_KONTRTUBE_DP = Y
+SUPPORT_SPORTSVIDEO_DP = Y
+SUPPORT_ARABICFILM_DP = Y
+SUPPORT_MBCSHAHID_DP = Y
+SUPPORT_YOUKU_DP = Y
+SUPPORT_DUBAIMEDIA_DP = Y
+SUPPORT_NMYOUPORN_DP = Y
+SUPPORT_NMYOUTUBE_DP = Y
+SUPPORT_DONANG_DP = Y
+SUPPORT_WEBYOUTUBE_DP = Y
+SUPPORT_SELFIP_DP = Y
+SUPPORT_BEFUCK_DP = Y
+SUPPORT_TUKIF_DP = Y
+SUPPORT_ANYPORN_DP = Y
+SUPPORT_EPORNER_DP = Y
+SUPPORT_BASKINO_DP = Y
+################################################
+#
+# this variable decide whether use script api to dynamic pasre scriptsk
+#
+#
+################################################
+ENABLE_USE_SCRIPT   =    Y
+
+##############################################################################
+#
+#  this variable decide whether playback call API relative to socket
+#
+#
+###########################################################################3
+WITH_TCPIP_PROTOCOL = Y
+

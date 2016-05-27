@@ -1,0 +1,25 @@
+#ifndef __UI_CA_FEED_H__
+#define __UI_CA_FEED_H__
+
+
+#define CA_FEED_MESSAGE_X          		(COMM_ITEM_OX_IN_ROOT/2)
+#define CA_FEED_MESSAGE_Y          		(COMM_ITEM_OY_IN_ROOT/2)
+#define CA_FEED_MESSAGE_W          		(SYS_RIGHT_CONT_W - COMM_ITEM_OY_IN_ROOT)
+#define CA_FEED_MESSAGE_H          		(300)
+
+#define CA_FEED_BUTTON_START_X          (CA_FEED_MESSAGE_X + CA_FEED_MESSAGE_W/2 - CA_FEED_BUTTON_START_W*2)
+#define CA_FEED_BUTTON_START_Y          (CA_FEED_MESSAGE_Y + CA_FEED_MESSAGE_H + COMM_ITEM_OY_IN_ROOT)
+#define CA_FEED_BUTTON_START_W          (COMM_ITEM_OX_IN_ROOT)
+#define CA_FEED_BUTTON_START_H          (COMM_ITEM_H)
+
+#define CA_FEED_BUTTON_END_X          	(CA_FEED_MESSAGE_X + CA_FEED_MESSAGE_W/2 + CA_FEED_BUTTON_START_W)
+#define CA_FEED_BUTTON_END_Y          	(CA_FEED_BUTTON_START_Y)
+#define CA_FEED_BUTTON_END_W          	(COMM_ITEM_OX_IN_ROOT)
+#define CA_FEED_BUTTON_END_H          	(COMM_ITEM_H)
+
+
+
+RET_CODE open_ca_feed(u32 para1, u32 para2);
+
+#endif
+

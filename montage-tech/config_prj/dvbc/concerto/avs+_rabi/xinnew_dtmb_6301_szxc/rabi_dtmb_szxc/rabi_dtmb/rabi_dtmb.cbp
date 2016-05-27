@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="rabi_dtmb" />
+		<Option pch_mode="2" />
+		<Option compiler="mips24k" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin\Release\rabi_dtmb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="mips24k" />
+				<Compiler>
+					<Add option="-Os -EL -march=mips32r2 -mxgot -mabi=32 -mlong-calls -mno-abicalls -Wall -Wno-pointer-sign -Werror -g -DARCH=CONCERTO  -DASSERT_ON -D_ASSEMBLER_ -DCACHE_INIT -DTLB_INIT -ffunction-sections -D${HW_PLATFORM}" />
+					<Add option='-MMD -MP -MF&quot;$object.d&quot; -MT&quot;$object.d&quot;' />
+					<Add option="-DVFONT" />
+					<Add option="-DBIGFONT_PROJECT" />
+					<Add option="-DUSE_AV_OS" />
+					<Add option="-DAUTO_FACTORY_DEFAULT" />
+					<Add option="-DIMPL_NEW_EPG" />
+					<Add option="-DDTMB_PROJECT" />
+					<Add option="-DENABLE_CA" />
+					<Add option="-DSZXC_CA" />
+					<Add option="-DDOWNLOAD_HTTP_NEW" />
+					<Add option="-DTV_BIRTHNESS_EN" />
+					<Add option="-DREMOTE_REPEAT_DELAY" />
+					<Add directory='&quot;${PROJECT_LOC}\inc&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\ap&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\api&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\drv&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\hal&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\mdl&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\os&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\util&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\firmware&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\drv\bus&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\drv\drvbase&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\hal\arch&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\ts_seq&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\mdl\eva&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\mdl\filters&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\mdl\mmi&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\util\iconv&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\util\log&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\database&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\sysstatus&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ui&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\includes&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\includes\ms&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\sowell\inc&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ca&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ap&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\firmware\core\include&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\firmware\pic_16f7x&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\mdl\mmi\gui\vfont\inc&quot;' />
+					<Add directory="${PROJECT_LOC}\src\os\ucos\inc" />
+					<Add directory="${PROJECT_LOC}\src\kware\tcpip_pro\networking\inc" />
+					<Add directory="${PROJECT_LOC}\inc\hal\arch" />
+					<Add directory="${PROJECT_LOC}\inc\util\log" />
+					<Add directory="${PROJECT_LOC}\inc\mdl\eva" />
+					<Add directory="${PROJECT_LOC}\inc\mdl\filters" />
+					<Add directory="${PROJECT_LOC}\inc\mdl\mmi" />
+					<Add directory="${PROJECT_LOC\inc\kware\demux_mp" />
+					<Add directory="${PROJECT_LOC}\src\kware\demux_mp\mplayer" />
+					<Add directory="${PROJECT_LOC}\src\mdl\mmi\gui\vfont\inc" />
+					<Add directory="${PROJECT_LOC}\src\kware\tcpip_pro\lwip\src\include" />
+					<Add directory="${PROJECT_LOC}\src\kware\tcpip_pro\lwip\src\include\ipv4" />
+					<Add directory="${PROJECT_LOC}\src\kware\tcpip_pro\lwip\arch\include" />
+					<Add directory="${PROJECT_LOC}\src\kware\tcpip_pro\lwip\arch\include\arch" />
+					<Add directory="${PROJECT_LOC}\src\kware\ufs\fat" />
+					<Add directory="${PROJECT_LOC}\src\kware\ufs\ntfs-3g\include" />
+					<Add directory="${PROJECT_LOC}\src\kware\ufs\ntfs-3g\include\fuse-lite" />
+					<Add directory="${PROJECT_LOC}\src\kware\ufs\ntfs-3g\include\ntfs-3g" />
+					<Add directory="${PROJECT_LOC}\src\kware\ufs\ntfs-3g\src" />
+					<Add directory="${PROJECT_LOC}\src\firmware\core\include" />
+					<Add directory="${PROJECT_LOC}\inc\firmware" />
+					<Add directory="${PROJECT_LOC}\inc\kware" />
+					<Add directory="${PROJECT_LOC}\inc\kware\ts_seq" />
+					<Add directory="${PROJECT_LOC}\src\mdl\vfs" />
+					<Add directory="${PROJECT_LOC}\src\firmware\pic_16f7x" />
+					<Add directory="${PROJECT_LOC}\src\kware\ts_seq" />
+					<Add directory="${PROJECT_LOC}\src\kware\demux_mp\mplayer\ffmpeg" />
+					<Add directory="${PROJECT_LOC}\src\kware\demux_mp\mplayer\libmpdemux" />
+					<Add directory="${PROJECT_LOC}\src\kware\demux_mp\mplayer\stream" />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\tcpip&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\samba&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\RSSClient\RSSParser&quot;' />
+					<Add directory="${PROJECT_LOC}\inc\kware\network\netplay" />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\http_file&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\tcpip\netif&quot;' />
+					<Add directory="${PROJECT_LOC}\inc\kware\network\dlna" />
+					<Add directory="${PROJECT_LOC}\prj\dvbc\rabi\common\inc" />
+					<Add directory="${PROJECT_LOC}\inc\kware\file_playback" />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\http&quot;' />
+					<Add directory="${PROJECT_LOC}\src\drv\nim\dvbt\mn88472_mxl603" />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\subt_ttx&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\sources&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\user_table&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ui\dlna&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\mdl\mmi\gui\resource\vf&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\network\dlna&quot;' />
+					<Add directory="${PROJECT_LOC}\src\mdl\mmi\framework" />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ca\mgcas_4.2.x&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\drv\drvbase&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\src\kware\cas&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\authorization&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\jansson&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\inc\kware\RSSClient\tinyxml&quot;' />
+					<Add directory="${PROJECT_LOC}\src\drv\nim\dvbt\m88dd3k-6301" />
+					<Add directory='&quot;${PROJECT_LOC}\inc\drv\secure&quot;' />
+				</Compiler>
+				<Linker>
+					<Add option="--oformat elf32-tradlittlemips --gc-sections -nostdlib -T${PROJECT_DIR}\link.lds -o rabi_dtmb.elf -Map rabi_dtmb.map" />
+					<Add library="netbase" />
+					<Add library="network" />
+					<Add library="openssla" />
+					<Add library="opensslb" />
+					<Add library="RecordSeq" />
+					<Add library="core_jasmine_drv" />
+					<Add library="core_jasmine_drv_open" />
+					<Add library="stdc++" />
+					<Add library="supc++" />
+					<Add library="c" />
+					<Add library="core_ap_mdl_mt" />
+					<Add library="core_ap_mdl" />
+					<Add library="gcc" />
+					<Add library="m" />
+					<Add library="PlaybackSeq" />
+					<Add library="ft_24k" />
+					<Add library="eva_drv_concerto" />
+					<Add library="eva_mdl_concerto" />
+					<Add library="tinyxml" />
+					<Add library="BasicUsageEnvironment" />
+					<Add library="groupsock" />
+					<Add library="liveMedia" />
+					<Add library="UsageEnvironment" />
+					<Add library="rtmp" />
+					<Add library="core_ap_mdl_net_mt" />
+					<Add library="neon" />
+					<Add library="downloadfile" />
+					<Add library="log_dummy" />
+					<Add library="dlna" />
+					<Add library="libRSSClient" />
+					<Add library="ABROADOttData" />
+					<Add library="MDemux" />
+					<Add library="SimpleScript" />
+					<Add library="usbcore" />
+					<Add library="rt7601" />
+					<Add library="rtl8188" />
+					<Add library="iqiyiTVCWrapper" />
+					<Add library="mplayer" />
+					<Add library="z" />
+					<Add library="mgcaslib_v423_CC6000" />
+					<Add directory='&quot;${PROJECT_LOC}\lib\lib_concerto\lib_net&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\lib\lib_concerto&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\lib\lib_kware\mips24k\lib_ott&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\lib\lib_kware\mips24k&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\lib\lib_mips24k&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\lib&quot;' />
+				</Linker>
+				<ExtraCommands>
+					<Add before="touch ${PROJECT_DIR}../../../../../../../prj/dvbc/rabi/sources/mips/main.c" />
+					<Add after="sh ${PROJECT_DIR}/post_build.sh ${ProjName}.elf" />
+					<Mode after="always" />
+				</ExtraCommands>
+				<Environment>
+					<Variable name="PROJECT_LOC" value="${PROJECT_DIR}..\..\..\..\..\..\.." />
+					<Variable name="HW_PLATFORM" value="CHIP" />
+					<Variable name="ProjName" value="rabi_dtmb" />
+				</Environment>
+			</Target>
+		</Build>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\Ap_usb_upgrade_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_cas_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_charsto_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_charsto_impl.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_epg_impl4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_framework_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_playback_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_scan_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_signal_mon_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_time_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_ts_ota_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_uio_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\ap_upgrade_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ap\sys_debug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\authorization\authorization.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\authorization\authorization.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\cas_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\cas_manager.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\cas_manager_impl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\config_cas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\config_cas.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_burse_charge.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_burse_charge.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_card_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_card_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_mother.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_mother.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pair.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pair.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv_icon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv_icon.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pre_auth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pre_auth.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_prompt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_prompt.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_public.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_public.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_conditional_entitle_expire.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_conditional_entitle_expire.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_email_mess.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_email_mess.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_finger_print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_finger_print.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_new_mail.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_new_mail.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\ui_ca_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\ui_ca_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\SM_StateMachine.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\States_Youtube.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_albums.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_albums_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_net_music_metadata_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_net_music_play_ctrl_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_network_music.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_network_music_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_news.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_news_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_news_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_news_title.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_photo_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_photo_show.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_photos.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_ping_test.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_pppoe_connect.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_submenu_network.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_upgrade_by_network.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_video_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_vod_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_weather.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_wifi.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_wifi_link_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\common\inc\ui_ytbl.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\customer\xinnew_dtmb_szxc\customer_config_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_conn_play.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_conn_play.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_dvbs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_dvbs.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_iptv.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_play_hist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_play_hist.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_preset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\db_preset.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\livetv_db.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\database\livetv_db.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\demux\app_demux.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\demux\app_demux.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\demux\sys_app.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_dmx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_dmx.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_entry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_entry.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_ir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_ir.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_system.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\cmd_system.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\emon_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\emon_cmd.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\emon_cmd\emon_hist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\dump.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\gx_jansson.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\gxjansson.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\hashtable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\hashtable.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\jansson.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\jansson_config.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\jansson_private.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\memory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\pack_unpack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\strbuffer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\strbuffer.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\strconv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\utf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\utf.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\value.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\bmp_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\font_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\language_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\mgdef_v42x.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\str_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\src\cas_adt_mg_v42x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\src\cas_drv_mg_v42x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\ap_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\custom_url.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\customer_config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\mem_cfg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\mips\main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\string_pool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\string_pool.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\ttx_font_hd_vsb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\ucas.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sources\ucas_key.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sysstatus\sys_status.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\sysstatus\sys_status.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\SM_StateMachine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\SM_StateMachine.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_Classic.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_Desktop.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_Iptv.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_IptvSearch.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_Redtube.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\States_Simple.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\al_netmedia.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\bmp_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\dlna\ui_dlna_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\dlna\ui_dlna_dmr.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\dlna\ui_dlna_external.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\dlna\ui_dlna_internal.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\dlna\ui_satip.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\font_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\game_othello.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\language_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\palette_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\str_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_audio_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_audio_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_auth_server_setting.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_auth_server_setting.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_auto_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_auto_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_book_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_book_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_book_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_book_list.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_ctrl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_ctrl.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_dlg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_dlg.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_pwdlg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_pwdlg.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_root.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_comm_root.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_common.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_config.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_dbase_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_dbase_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_desktop.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_desktop.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_do_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_do_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_dump_by_usb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_dump_by_usb.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_dvr_config.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_edit_ip_path.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_edit_ip_path.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_edit_usr_pwd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_edit_usr_pwd.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_epg_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_epg_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_epg_detail.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_factory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_factory.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_fav_list.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_fav_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_favorite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_favorite.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_find.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_find.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_fp_audio_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_fp_audio_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_freq_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_freq_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_fun_help.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_game_common.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_game_othello.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_game_tetris.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_google_map.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_gui_defines.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_gui_defines.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_hdd_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_hdd_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_description.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_description.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_gprot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_player.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_player.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_prot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_iptv_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_jump.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_jump.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_keyboard_ctrl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_keyboard_ctrl.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_keyboard_v2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_keyboard_v2.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_language.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_live_tv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_live_tv.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_live_tv_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_live_tv_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_mainmenu.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_manual_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_manual_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_menu_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_menu_manager.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_movie_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_music_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_music_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_mute.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_mute.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_net_upg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_net_upg.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_net_upg_dec.cpp" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_net_upg_dec.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_3g.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_gprs.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_lan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_lan.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_wifi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_network_config_wifi.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_networkplaces.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nm_classic.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nm_gprot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nm_prot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nm_simple.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_notify.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_notify.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nprog_bar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_nprog_bar.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_num_play.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_num_play.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_onmov_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_osd_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_osd_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ota_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_parental_lock.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pause.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pause.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pic_play_mode_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pic_play_mode_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_picture.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_picture.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_picture_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_picture_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ping_test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_ping_test.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_play_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_play_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_play_hist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_play_hist.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pppoe_connect.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_prog_detail.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_prog_detail.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_prog_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_prog_list.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pvr_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pvr_play_bar.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_pvr_rec_bar.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_range_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_range_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_recall_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_record_manager.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_rename.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_rename.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_scan_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_scan_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_set_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_signal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_signal.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_signal_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_signal_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sleep_hotkey.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sleep_hotkey.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sleep_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sleep_timer.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_small_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_small_list_v2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_small_list_v2.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sort_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_sort_list.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_storage_format.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_storage_format.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_submenu_network.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_submenu_networkconfig.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_submenu_online.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_subt_language.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_subt_language.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_systatus_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_systatus_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial_full_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial_full_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial_manual_search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_terrestrial_manual_search.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_text_encode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_time_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_time_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_time_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_timer.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_timeshift_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_timeshift_bar.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_tvsys_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_by_network.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_by_network.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_by_rs232.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_upgrade_by_usb.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_music.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_music.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_music_fullscreen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_music_fullscreen.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_picture.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_usb_setting.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_util.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_util_api.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_util_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_utils.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_vdo_favorite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_vdo_favorite.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_vepg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_vepg.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_goto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_goto.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_iqy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_iqy.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_m.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_player.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_player.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_player_gprot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_player_prot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_subtitle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_v.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_v_full_screen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_video_v_full_screen.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_volume.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_volume.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_volume_usb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_volume_usb.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_weather.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_wifi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_wifi.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_wifi_link_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_wifi_link_info.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xbootWizard.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xbootWizard.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xextend.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xextend.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xfilebox.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xfilebox.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xfreq_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xinfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xinfo.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xlanguage.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xlanguage.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xmainmenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xmainmenu.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xparental_lock.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xparental_lock.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xsearch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xsearch.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xstb_help.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xstb_help.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xstb_name.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xstb_name.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xsys_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xsys_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xtime_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xtime_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xtvsys_set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xtvsys_set.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xupgrade_by_rs232.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xupgrade_by_rs232.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xupgrade_by_usb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_xupgrade_by_usb.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_youporn.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_youporn_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_youtube_api.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_youtube_gprot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_youtube_prot.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_zoom.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ui\ui_zoom.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\user_table\user_parse_table.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\user_table\user_parse_table.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\vod\IIPTVDataProvider.cpp" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\vod\IqiyiDataProvider.cpp" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\vod\iqy_porting_function.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\atbm\iic.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\atbm\nim_atbm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MaxLinearDataTypes.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_Features.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_OEM_Drv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_OEM_Drv.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerApi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerApi.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerCfg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerCfg.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerSpurTable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_TunerSpurTable.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL603_UserApi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\MxL_Debug.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\fe_dd3k_def.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\fe_dd3k_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\fe_dd3k_i2c.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_common.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_dmd_dd3k.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_dmd_fw_dd3k.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tc2800.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tc2800.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tc3800.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tc3800.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tdac3_c02a.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\mt_fe_tn_tdac7_d01.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\dvbt\m88dd3k\nim_dd3k.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\nim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\src\drv\nim\nim_priv.h" />
+		<Unit filename="..\..\..\..\..\..\..\src\drv\uio\uio_priv.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

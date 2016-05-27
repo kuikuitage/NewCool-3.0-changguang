@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Data_Editer", "Data_Editer\OTA_Tools.vcproj", "{83A9E0C6-B86D-4339-9FE9-CFA98BE25A9A}"
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83A9E0C6-B86D-4339-9FE9-CFA98BE25A9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83A9E0C6-B86D-4339-9FE9-CFA98BE25A9A}.Debug|Win32.Build.0 = Debug|Win32
+		{83A9E0C6-B86D-4339-9FE9-CFA98BE25A9A}.Release|Win32.ActiveCfg = Release|Win32
+		{83A9E0C6-B86D-4339-9FE9-CFA98BE25A9A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

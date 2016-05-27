@@ -1,0 +1,262 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\OTA_Tools.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\OTA_Tools.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OTA_TOOLS_DIALOG DIALOGEX 0, 0, 555, 355
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Data Editer"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LTEXT           "Block_File:",IDC_STATIC,36,42,35,11
+    EDITTEXT        IDC_EDIT_FILE,85,40,249,17,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BTN_IN_BR,343,39,43,18
+    LTEXT           "Block Type:",IDC_STATIC_BLOCK_FIX_TYPE,37,225,38,15
+    COMBOBOX        IDC_CMB_FILETYPE,87,224,116,14,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Keep DB Data:",IDC_STATIC,29,244,49,11
+    COMBOBOX        IDC_CMB_KEEPDATA,87,243,75,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Block Version:",IDC_STATIC_ALL_BLOCK_VERSION,31,279,48,11
+    EDITTEXT        IDC_EDIT_BLOCKVER,87,278,75,12,ES_AUTOHSCROLL
+    LTEXT           "Create File Path:",IDC_STATIC,27,298,57,15
+    EDITTEXT        IDC_EDIT_CREATEFILEPATH,85,297,249,17,ES_AUTOHSCROLL
+    PUSHBUTTON      "Create Upg File",IDC_BTN_CREATE,150,321,75,17
+    PUSHBUTTON      "Browse",IDC_BTN_OUT_BR,343,297,43,18
+    LTEXT           "Keep set Data:",IDC_STATIC,27,261,53,10
+    COMBOBOX        IDC_CMB_KEEPSYSDATA,87,260,75,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Flash_old_file:",IDC_STATIC,24,85,51,12
+    EDITTEXT        IDC_EDIT1,85,86,249,17,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BTN_IN_FLASH_OLD,343,84,43,18
+    LTEXT           "block_ Type:",IDC_STATIC,27,62,46,15
+    EDITTEXT        IDC_EDIT2,85,62,249,17,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Upg_flash_file:",IDC_STATIC,25,198,54,13
+    PUSHBUTTON      "Create new flash file",IDC_BUTTON1,150,135,75,17
+    EDITTEXT        IDC_EDIT3,85,194,249,17,ES_AUTOHSCROLL
+    LTEXT           "Flash_new_file:",IDC_STATIC,21,111,51,12
+    EDITTEXT        IDC_EDIT4,85,107,249,17,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BUTTON2,343,107,43,18
+    PUSHBUTTON      "Browse",IDC_BR_INPUT_UPG_FILE,343,193,43,18
+    GROUPBOX        "Data Update",IDC_STATIC,7,7,541,157
+    GROUPBOX        "Data Cutter",IDC_STATIC,7,167,541,181
+    LTEXT           "Keep CA Data:",IDC_STATIC_CA_DATA,187,244,49,11
+    LTEXT           "Keep ad Data:",IDC_STATIC_AD_DATA,187,261,48,11
+    COMBOBOX        IDC_COMBO_CA,239,243,94,13,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_AD,239,260,93,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Upg block select",IDC_STATIC_UPG_SL_AREA,411,194,70,145
+    CONTROL         "select1",IDC_CHECK_BL_S1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,206,56,10
+    CONTROL         "select2",IDC_CHECK_BL_S2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,219,56,10
+    CONTROL         "select3",IDC_CHECK_BL_S3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,232,56,10
+    CONTROL         "select4",IDC_CHECK_BL_S4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,245,56,10
+    CONTROL         "select5",IDC_CHECK_BL_S5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,258,56,10
+    CONTROL         "select6",IDC_CHECK_BL_S6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,271,56,10
+    CONTROL         "select7",IDC_CHECK_BL_S7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,284,56,10
+    CONTROL         "select8",IDC_CHECK_BL_S8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,297,56,10
+    CONTROL         "select9",IDC_CHECK_BL_S9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,310,56,10
+    CONTROL         "select10",IDC_CHECK_BL_S10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,415,323,56,10
+    GROUPBOX        "Upg block version",IDC_STATIC_UPG_BLOCK_VERSION,479,194,62,145
+    EDITTEXT        IDC_EDIT_VERSION1,484,204,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION2,484,217,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION3,484,230,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION4,484,243,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION5,484,256,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION6,484,269,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION7,484,282,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION8,484,295,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION9,484,308,50,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VERSION10,484,321,50,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,3
+ PRODUCTVERSION 1,0,0,3
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.3"
+            VALUE "InternalName", "Data_Editer.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "Data_Editer.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.3"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_OTA_TOOLS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 548
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 348
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_OTA_TOOLS_DIALOG DLGINIT
+BEGIN
+    IDC_CMB_FILETYPE, 0x403, 7, 0
+0x5250, 0x5345, 0x5445, "\000" 
+    IDC_CMB_FILETYPE, 0x403, 5, 0
+0x4f4c, 0x4f47, "\000" 
+    IDC_CMB_FILETYPE, 0x403, 12, 0
+0x4f4c, 0x4f47, 0x502b, 0x4552, 0x4553, 0x0054, 
+    IDC_CMB_FILETYPE, 0x403, 9, 0
+0x414d, 0x4e49, 0x4f43, 0x4544, "\000" 
+    IDC_CMB_FILETYPE, 0x403, 8, 0
+0x5041, 0x5f50, 0x4c41, 0x004c, 
+    IDC_CMB_KEEPDATA, 0x403, 5, 0
+0x656b, 0x7065, "\000" 
+    IDC_CMB_KEEPDATA, 0x403, 8, 0
+0x6f6e, 0x6b20, 0x6565, 0x0070, 
+    IDC_CMB_KEEPSYSDATA, 0x403, 5, 0
+0x656b, 0x7065, "\000" 
+    IDC_CMB_KEEPSYSDATA, 0x403, 8, 0
+0x6f6e, 0x6b20, 0x6565, 0x0070, 
+    IDC_COMBO_CA, 0x403, 5, 0
+0x656b, 0x7065, "\000" 
+    IDC_COMBO_CA, 0x403, 8, 0
+0x6f6e, 0x6b20, 0x6565, 0x0070, 
+    IDC_COMBO_AD, 0x403, 5, 0
+0x656b, 0x7065, "\000" 
+    IDC_COMBO_AD, 0x403, 8, 0
+0x6f6e, 0x6b20, 0x6565, 0x0070, 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\OTA_Tools.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

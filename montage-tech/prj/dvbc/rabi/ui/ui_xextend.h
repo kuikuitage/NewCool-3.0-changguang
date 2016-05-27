@@ -1,0 +1,67 @@
+#ifndef __UI_XEXTEND_H__
+#define __UI_XEXTEND_H__
+#include "ui_small_list_v2.h"
+
+#define EXTEND_W		200
+#define EXTEND_H		450
+#define EXTEND_GAP		35
+#define EXTEND_CONT_GAP	10
+
+//main option
+#define BTN1_H			35
+#define BTN1_W			(EXTEND_W)
+#define BTN1_GARY		3
+
+#define BMP_W		30
+#define BTN_BMP_GARY	3
+
+#define DESKTOP_CONT1_X		0
+#define DESKTOP_CONT1_Y		200
+
+#define EXTEND_AND_MENU_GAP		5
+
+enum{
+	IDC_XEXTEND_MUTE=1,
+	IDC_XEXTEND_AUDIO_TRACK,
+	#ifdef VOLUME_CHANNEL_ON
+	IDC_XEXTEND_CHANNEL,
+	#endif
+	//IDC_XEXTEND_ALL_EPG_DESKTOP,
+	IDC_XEXTEND_INFO,
+	IDC_XEXTEND_ADD_FAV_DESKTOP,
+	IDC_XEXTEND_PAUSE,
+
+	//	IDC_XEXTEND_TVRADIO,
+
+	IDC_A_KEY_SEARCH,
+	IDC_XEXTEND_SLEEP_TIMER,
+	IDC_XEXTEND_SETTING,
+
+	XEXTEND_BTN1_CNT_DESKTOP,
+};
+enum{
+	IDC_XEXTEND_ADD_TO_FAV = XEXTEND_BTN1_CNT_DESKTOP,
+	IDC_XEXTEND_ALL_EPG,
+	IDC_XEXTEND_LOCK,
+	IDC_XEXTEND_SKIP,
+	IDC_XEXTEND_DELETE,
+#ifdef XEXTEND_SMLIST_DELETE_ALL
+	IDC_XEXTEND_DELETE_ALL,
+#endif
+	XEXTEND_BTN1_CNT_PROG_LIST,
+};
+
+typedef struct{
+	u16 x;
+	u16 y;
+	u16 w;
+	u16 h;
+}btn_rec_t;
+
+control_t *get_extend_cont1_ctrl(void);
+
+
+RET_CODE open_extend(u32 para1, u32 para2);
+
+#endif //__UI_XEXTEND_H__
+

@@ -1,0 +1,11 @@
+all:
+	mipsel-linux-ar x libPlaybackSeq.a
+	mipsel-linux-ar x libMDemux.a
+	rm -fr *.a
+	mipsel-linux-ar crs libmplayer.a *.o
+	mipsel-linux-ranlib  libmplayer.a
+
+clean:
+	rm -fr  *.o
+
+	
