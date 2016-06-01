@@ -1939,6 +1939,16 @@ INT32 DIVI_TableStart(UINT8 iRequestID,
        p_param.mask[10] = pbFilterMask1[12];
       #else
        p_param.value[0] = pbFilterMatch1[0];
+       if(CA_STB_FILTER_4 == iRequestID)
+	   {
+         p_param.value[0] = 0x80;
+		 p_param.mask[0] = 0xFE;
+	   }
+	   else
+	   {
+		 p_param.value[0] = pbFilterMatch1[0];
+		 p_param.mask[0] = pbFilterMask1[0];
+	   }
        p_param.value[1] = pbFilterMatch1[1];
        p_param.value[2] = pbFilterMatch1[2];
        p_param.value[3] = pbFilterMatch1[3];

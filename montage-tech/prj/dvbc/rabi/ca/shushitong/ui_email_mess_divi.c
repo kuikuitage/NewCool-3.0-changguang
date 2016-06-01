@@ -1,6 +1,6 @@
 
 #include "ui_common.h"
-#include "ui_email_mess.h"
+#include "ui_email_mess_divi.h"
 #include "ui_ca_public.h"
 
 
@@ -68,8 +68,8 @@ static cas_mail_headers_t test_cas_mail_head =
 };
 #endif
 
-u16 email_plist_list_keymap(u16 key);
-RET_CODE email_plist_list_proc(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
+u16 email_plist_list_keymap_DIVI(u16 key);
+RET_CODE email_plist_list_proc_DIVI(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
 
 RET_CODE asc_to_dec(const u8 *p_ascstr, u32 *p_dec_number, u32 max_len)
 {
@@ -180,7 +180,7 @@ static RET_CODE email_plist_update(control_t* ctrl, u16 start, u16 size, u32 con
     sprintf((char*)asc_str,"%d",p_mail_data_buf->max_num);
     text_set_content_by_ascstr(p_ctrl, (u8*)asc_str);
     p_ctrl = ctrl_get_child_by_id(ctrl->p_parent, IDC_EMAIL_RESET);
-    sprintf((char*)asc_str,"%d",EMAIL_MAX_NUMB - p_mail_data_buf->max_num);
+    sprintf((char*)asc_str,"%d",EMAIL_MAX_NUMB_DIVI - p_mail_data_buf->max_num);
     text_set_content_by_ascstr(p_ctrl, (u8*)asc_str);
   }
   return SUCCESS;
@@ -246,7 +246,7 @@ static RET_CODE on_ca_mail_preread(control_t *p_ctrl, u16 msg, u32 para1, u32 pa
 }
 #endif
 
-RET_CODE open_email_mess(u32 para1, u32 para2)
+RET_CODE open_email_mess_DIVI(u32 para1, u32 para2)
 {
   control_t *p_cont = NULL;
   control_t *p_mbox = NULL;
@@ -324,10 +324,10 @@ RET_CODE open_email_mess(u32 para1, u32 para2)
   
   //email list
   p_list = ctrl_create_ctrl(CTRL_LIST, IDC_EMAIL_PRO,
-                           EMAIL_LIST_X, EMAIL_LIST_Y, EMAIL_LIST_W,EMAIL_LIST_H, p_cont, 0);
+                           EMAIL_LIST_X_DIVI, EMAIL_LIST_Y_DIVI, EMAIL_LIST_W_DIVI,EMAIL_LIST_H_DIVI, p_cont, 0);
   ctrl_set_rstyle(p_list, RSI_PBACK, RSI_PBACK, RSI_PBACK);
-  ctrl_set_keymap(p_list, email_plist_list_keymap);
-  ctrl_set_proc(p_list, email_plist_list_proc);
+  ctrl_set_keymap(p_list, email_plist_list_keymap_DIVI);
+  ctrl_set_proc(p_list, email_plist_list_proc_DIVI);
 
   ctrl_set_mrect(p_list, EMAIL_LIST_MIDL, EMAIL_LIST_MIDT,
            EMAIL_LIST_MIDL + EMAIL_LIST_MIDW, EMAIL_LIST_MIDT + EMAIL_LIST_MIDH);
@@ -348,19 +348,19 @@ RET_CODE open_email_mess(u32 para1, u32 para2)
   
   //list scroll bar
   p_sbar = ctrl_create_ctrl(CTRL_SBAR, IDC_EMAIL_BAR, 
-                              EMAIL_SBAR_X, EMAIL_SBAR_Y, EMAIL_SBAR_W, EMAIL_SBAR_H, 
+                              EMAIL_SBAR_X_DIVI, EMAIL_SBAR_Y_DIVI, EMAIL_SBAR_W_DIVI, EMAIL_SBAR_H_DIVI, 
                               p_cont, 0);
   ctrl_set_rstyle(p_sbar, RSI_SCROLL_BAR_BG, RSI_SCROLL_BAR_BG, RSI_SCROLL_BAR_BG);
   sbar_set_autosize_mode(p_sbar, 1);
   sbar_set_direction(p_sbar, 0);
   sbar_set_mid_rstyle(p_sbar,  RSI_GRAY,  RSI_GRAY,  RSI_GRAY);
-  ctrl_set_mrect(p_sbar, 0, 0, EMAIL_SBAR_W,  EMAIL_SBAR_H);
+  ctrl_set_mrect(p_sbar, 0, 0, EMAIL_SBAR_W_DIVI,  EMAIL_SBAR_H_DIVI);
   list_set_scrollbar(p_list, p_sbar);
   //email_plist_update(p_list, list_get_valid_pos(p_list), EMAIL_LIST_PAGE, 0);
   
   //received head
   p_ctrl = ctrl_create_ctrl(CTRL_TEXT, IDC_EMAIL_RECEIVED_HEAD,
-                           EMAIL_RECEIVED_HEAD_X, EMAIL_RECEIVED_HEAD_Y,
+                           EMAIL_RECEIVED_HEAD_X_DIVI, EMAIL_RECEIVED_HEAD_Y,
                            EMAIL_RECEIVED_HEAD_W,EMAIL_RECEIVED_HEAD_H,
                            p_cont, 0);
   ctrl_set_rstyle(p_ctrl, RSI_PBACK, RSI_PBACK, RSI_PBACK);
@@ -400,7 +400,7 @@ RET_CODE open_email_mess(u32 para1, u32 para2)
   text_set_align_type(p_ctrl, STL_LEFT | STL_VCENTER);
   text_set_font_style(p_ctrl, FSI_WHITE, FSI_WHITE, FSI_WHITE);
   text_set_content_type(p_ctrl, TEXT_STRTYPE_UNICODE);
-  sprintf((char*)asc_str,"%d",EMAIL_MAX_NUMB);
+  sprintf((char*)asc_str,"%d",EMAIL_MAX_NUMB_DIVI);
   text_set_content_by_ascstr(p_ctrl, (u8*)asc_str);
 
   //del one
@@ -592,7 +592,7 @@ static RET_CODE on_email_exit_all(control_t *p_ctrl, u16 msg, u32 para1, u32 par
   return SUCCESS;
 }
 
-BEGIN_KEYMAP(email_plist_list_keymap, NULL)
+BEGIN_KEYMAP(email_plist_list_keymap_DIVI, NULL)
   ON_EVENT(V_KEY_F1, MSG_DELETE_ONE)
   ON_EVENT(V_KEY_RED, MSG_DELETE_ONE)
   ON_EVENT(V_KEY_HOT_XDEL, MSG_DELETE_ONE)
@@ -607,9 +607,9 @@ BEGIN_KEYMAP(email_plist_list_keymap, NULL)
 	ON_EVENT(V_KEY_BACK, MSG_EXIT)
   ON_EVENT(V_KEY_OK, MSG_SELECT)
   ON_EVENT(V_KEY_MAIL, MSG_EXIT_ALL)
-END_KEYMAP(email_plist_list_keymap, NULL)
+END_KEYMAP(email_plist_list_keymap_DIVI, NULL)
 
-BEGIN_MSGPROC(email_plist_list_proc, list_class_proc)
+BEGIN_MSGPROC(email_plist_list_proc_DIVI, list_class_proc)
   ON_COMMAND(MSG_FOCUS_UP, on_email_list_change_focus)
   ON_COMMAND(MSG_FOCUS_DOWN, on_email_list_change_focus)
   ON_COMMAND(MSG_PAGE_UP, on_email_list_change_focus)
@@ -621,5 +621,5 @@ BEGIN_MSGPROC(email_plist_list_proc, list_class_proc)
   ON_COMMAND(MSG_DELETE_ALL, on_dlg_email_del_all_mail)
   ON_COMMAND(MSG_EXIT, on_email_exit)
   ON_COMMAND(MSG_EXIT_ALL, on_email_exit_all)
-END_MSGPROC(email_plist_list_proc, list_class_proc)
+END_MSGPROC(email_plist_list_proc_DIVI, list_class_proc)
 

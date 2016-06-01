@@ -1,5 +1,6 @@
 #include "ui_common.h"
-#include "ui_email_mess.h"
+#include "ui_email_mess_mg.h"
+#include "ui_email_mess_divi.h"
 #include "ui_ca_public.h"
 
 static cas_mail_headers_t *p_mail_data_buf = NULL;
@@ -83,8 +84,9 @@ list_field_attr_t email_plist_attr[EMAIL_LIST_FIELD] =
 
 
 u16 email_plist_list_keymap(u16 key);
-RET_CODE email_plist_list_proc(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
+RET_CODE email_plist_list_proc_MG(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
 
+#if 0
 RET_CODE asc_to_dec(const u8 *p_ascstr, u32 *p_dec_number, u32 max_len)
 {
 	u32 i = 0;
@@ -119,6 +121,7 @@ RET_CODE asc_to_dec(const u8 *p_ascstr, u32 *p_dec_number, u32 max_len)
 
 	return SUCCESS;
 }
+#endif
 
 static RET_CODE email_plist_update(control_t* ctrl, u16 start, u16 size, u32 context)
 {
@@ -225,7 +228,7 @@ static RET_CODE plist_update_email(control_t *p_ctrl, u16 msg, u32 para1, u32 pa
 
 #define EMAIL_CORE(x,y)  x#y
 
-RET_CODE open_email_mess(u32 para1, u32 para2)
+RET_CODE open_email_mess_MG(u32 para1, u32 para2)
 {
 	control_t *p_cont = NULL;
 	control_t *p_mbox = NULL;
@@ -291,7 +294,7 @@ RET_CODE open_email_mess(u32 para1, u32 para2)
 	                  		 EMAIL_LIST_X, EMAIL_LIST_Y, EMAIL_LIST_W,EMAIL_LIST_H, p_cont, 0);
 	ctrl_set_rstyle(p_list, RSI_PBACK, RSI_PBACK, RSI_PBACK);
 	ctrl_set_keymap(p_list, email_plist_list_keymap);
-	ctrl_set_proc(p_list, email_plist_list_proc);
+	ctrl_set_proc(p_list, email_plist_list_proc_MG);
 	list_set_item_rstyle(p_list, &email_item_rstyle);
 	list_set_count(p_list, 0, EMAIL_LIST_PAGE);
 
@@ -444,15 +447,10 @@ static RET_CODE on_email_del_mail(control_t *p_list, u16 msg, u32 para1, u32 par
 
 }
 
-void on_select_del(void)
-{
-	g_del_mail = 1;
-}
+extern void on_select_del(void);
 
-void on_cancel_select_del(void)
-{
-	g_del_mail = 0;
-}
+extern void on_cancel_select_del(void);
+
 
 static RET_CODE on_dlg_email_del_one_mail(control_t *p_list, u16 msg, u32 para1, u32 para2)
 {
@@ -543,7 +541,7 @@ BEGIN_KEYMAP(email_plist_list_keymap, NULL)
 	ON_EVENT(V_KEY_MAIL, MSG_EXIT_ALL)
 END_KEYMAP(email_plist_list_keymap, NULL)
 
-BEGIN_MSGPROC(email_plist_list_proc, list_class_proc)
+BEGIN_MSGPROC(email_plist_list_proc_MG, list_class_proc)
 	ON_COMMAND(MSG_FOCUS_UP, on_email_list_change_focus)
 	ON_COMMAND(MSG_FOCUS_DOWN, on_email_list_change_focus)
 	ON_COMMAND(MSG_PAGE_UP, on_email_list_change_focus)
@@ -554,5 +552,5 @@ BEGIN_MSGPROC(email_plist_list_proc, list_class_proc)
 	ON_COMMAND(MSG_DELETE_ALL, on_dlg_email_del_all_mail)
 	ON_COMMAND(MSG_EXIT, on_email_exit)
 	ON_COMMAND(MSG_EXIT_ALL, on_email_exit_all)
-END_MSGPROC(email_plist_list_proc, list_class_proc)
+END_MSGPROC(email_plist_list_proc_MG, list_class_proc)
 

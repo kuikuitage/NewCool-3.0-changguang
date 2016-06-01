@@ -58,7 +58,7 @@ RET_CODE open_ui_new_mail(u32 para1, u32 para2)
 
 	p_cont = fw_create_mainwin(ROOT_ID_NEW_MAIL,
 	                         NEW_MAIL_CONT_FULL_X, 
-	                         NEW_MAIL_CONT_FULL_Y, 
+	                         NEW_MAIL_CONT_FULL_Y_MG, 
 	                         NEW_MAIL_CONT_FULL_W, 
 	                         NEW_MAIL_CONT_FULL_H,
 	                         ROOT_ID_INVALID, 0,

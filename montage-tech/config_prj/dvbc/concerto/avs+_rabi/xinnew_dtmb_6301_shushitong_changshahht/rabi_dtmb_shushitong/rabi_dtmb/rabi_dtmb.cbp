@@ -22,6 +22,7 @@
 					<Add option="-DDTMB_PROJECT" />
 					<Add option="-DENABLE_CA" />
 					<Add option="-DSHUSHITONG_CA" />
+					<Add option="-DSZXC_CA" />
 					<Add option="-DDOWNLOAD_HTTP_NEW" />
 					<Add option="-DREMOTE_REPEAT_DELAY" />
 					<Add option="-DPROGRAM_LIST_FAST_CUT" />
@@ -117,6 +118,8 @@
 					<Add directory='&quot;${PROJECT_LOC}\inc\kware\RSSClient\tinyxml&quot;' />
 					<Add directory="${PROJECT_LOC}\src\drv\nim\dvbt\m88dd3k-6301" />
 					<Add directory='&quot;${PROJECT_LOC}\inc\drv\secure&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\ca\mgcas_4.2.x&quot;' />
 				</Compiler>
 				<Linker>
 					<Add option="--oformat elf32-tradlittlemips --gc-sections -nostdlib -T${PROJECT_DIR}\link.lds -o rabi_dtmb.elf -Map rabi_dtmb.map" />
@@ -158,14 +161,16 @@
 					<Add library="iqiyiTVCWrapper" />
 					<Add library="mplayer" />
 					<Add library="z" />
-					<Add library="DiviGuardCalib-Maike-CC6000-ChangshaXAC" />
+					<Add library="DiviGuardCalib-Maike-ChangshaXAC" />
 					<Add library="c" />
+					<Add library="mgcaslib_v423_CC6000" />
 					<Add directory='&quot;${PROJECT_LOC}\lib\lib_concerto\lib_net&quot;' />
 					<Add directory='&quot;${PROJECT_LOC}\lib\lib_concerto&quot;' />
 					<Add directory='&quot;${PROJECT_LOC}\lib\lib_kware\mips24k\lib_ott&quot;' />
 					<Add directory='&quot;${PROJECT_LOC}\lib\lib_kware\mips24k&quot;' />
 					<Add directory='&quot;${PROJECT_LOC}\lib\lib_mips24k&quot;' />
 					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\kware\cas\cas_shushitong\lib&quot;' />
+					<Add directory='&quot;${PROJECT_LOC}\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\lib&quot;' />
 				</Linker>
 				<ExtraCommands>
 					<Add before="touch ${PROJECT_DIR}../../../../../../../prj/dvbc/rabi/sources/mips/main.c" />
@@ -230,6 +235,38 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\cas_manager.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_burse_charge.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_burse_charge.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_mother.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_mother.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pair.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pair.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv_icon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_ppv_icon.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pre_auth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_ca_pre_auth.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_email_mess_mg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_email_mess_mg.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_finger_print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\mgcas_4.2.x\ui_finger_print.h" />
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\cas_manager_impl.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -273,10 +310,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_conditional_entitle_expire.h" />
-		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_email_mess.c">
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_email_mess_divi.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_email_mess.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_email_mess_divi.h" />
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\ca\shushitong\ui_new_mail.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -399,6 +436,17 @@
 		</Unit>
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\utf.h" />
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\jansson\value.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\bmp_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\font_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\language_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\mgdef_v42x.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\inc\str_id.h" />
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\src\cas_adt_mg_v42x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_adt_mg_v42x\src\cas_drv_mg_v42x.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\..\..\..\..\..\prj\dvbc\rabi\kware\cas\cas_shushitong\inc\DiviGuardCa.h" />

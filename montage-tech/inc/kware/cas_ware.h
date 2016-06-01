@@ -5331,7 +5331,15 @@ extern RET_CODE cas_yxsb_attach(cas_module_cfg_t *p_cfg, u32 *p_cam_id);
   */
 extern RET_CODE cas_zhh_attach(cas_module_cfg_t *p_cfg, u32 *p_cam_id);
 
+/*!
+  Attach the CAS module: divi
+  \param[in] p_cfg The configuation of this CAS
+  \param[out] p_cam_id The attached CAS handle
 
+  \return Return 0 for success and others for failure.
+  */
+
+extern RET_CODE cas_divi_attach(cas_module_cfg_t *p_cfg, u32 *p_cam_id);
 
 
 

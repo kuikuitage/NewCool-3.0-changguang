@@ -895,10 +895,6 @@ static RET_CODE _hotplug_handle(void *p_param, u32 event_status)
   return SUCCESS;
 }
 
-/*
-********** the common function used by CAS modules *******
-*/
-
 u8 cas_modify_vender(u8 *atr, u32 size)
 {
   u32 cam_id = CAS_UNKNOWN;
@@ -1778,3 +1774,52 @@ RET_CODE cas_descrambler_ctrl(u16 ca_sys_id, u32 cmd, void *p_param)
 
   return g_cas_priv.cam_op[cam_id].func.io_ctrl(cmd, p_param);
 }
+
+
+/*
+********** the common function used by CAS modules *******
+*/
+
+u32 cam_identify_by_reset_card(void *p_smc_drv)
+{
+	scard_atr_desc_t atr;
+	u8 atr_buf[32] = {0};
+	RET_CODE ret = ERR_FAILURE;
+	atr_t atr_parsed = {0};
+	u32 cam_id = CAS_UNKNOWN;
+	card_reset_info_t card_rst_info = {0};
+	atr.p_buf = atr_buf;
+    atr.atr_len = 0;
+    card_rst_info.p_atr = &atr;
+	ret = scard_active(p_smc_drv, &atr);
+	if(SUCCESS == ret)
+	{
+		_atr_parse(&atr_parsed, atr.p_buf, atr.atr_len);
+		if(atr_parsed.hbn == 1)
+		{
+			if((atr_parsed.hb[0] == 0x72) || (atr_parsed.hb[0] == 0x73))
+			{
+				cam_id = CAS_ID_BY;
+			}
+			else
+			{
+				cam_id = CAS_UNKNOWN;
+			}
+		}
+		else if(atr.atr_len == 4)
+		{
+			cam_id = _cam_identify(atr_parsed.hb, atr_parsed.hbn);
+			if(CAS_UNKNOWN == cam_id)
+			{
+				cam_id = CAS_ID_SV;
+			}
+		}
+		else
+		{
+			cam_id = _cam_identify(atr_parsed.hb, atr_parsed.hbn);
+		}
+		return cam_id;
+	}
+	return CAS_UNKNOWN;
+}
+

@@ -26,6 +26,7 @@
 #include "mtos_misc.h"
 
 #include "mgdef_v42x.h"
+#include "mg_cas_include.h"
 
 //#define JAZZ_MG
 #define CAS_ADT_DEBUG
@@ -68,181 +69,12 @@ static os_sem_t  g_sem_mg_ecmlock = {0};
 #endif
 
 /*!
-  the max OSD/message data length
-  */
-#define CAS_OSD_MSG_DATA_MAX_LEN    (128)
-
-
-/*!
   Declaration for CAS module's operation table
   */
-static cas_adapter_priv_t *g_cas_priv;
+extern cas_adapter_priv_t g_cas_priv;
 
-typedef enum
-{
-  ADT_MG_EVT_CARD_INSERT = 0x01,
-  ADT_MG_EVT_CARD_REMOVE = 0x02,
 
-  ADT_MG_EVT_MASK = 0x03,
-}cas_adt_mg_evt_t;
 
-typedef struct
-{
-  /*!
-    max support mail num
-    */
-  u8 max_mail_num;
-  /*!
-    mail policy see cas_data_overlay_policy_t
-    */
-  u8 mail_policy;
-}cas_adt_mg_maii_cfg_t;
-
-typedef struct
-{
-  scard_device_t *p_smc_dev;
-  dmx_device_t *p_dmx_dev;
-  os_sem_t mg_port_sem;
-  u8 stb_serial[10];
-  u8 card_status;
-  u8 card_ready_flg;
-  u8 slot;
-  /*!
-     0x01 indicates ECM filter continuous mode disabled, 0x00, indicates enabled.
-     0x02 indicates EMM filter continuous mode disabled, 0x00, indicates enabled.
-    */
-  u8 filter_mode;
-  drvsvc_handle_t *p_EMM_Pro_svc;
-  drvsvc_handle_t *p_ECM_Pro_svc;
-
-  u16 cur_ecm_pid;
-  u16 cur_emm_pid;
-  u16 cur_ecm_dmx_chan;
-  u16 cur_v_pid;
-  u16 cur_a_pid;
-  u16 pre_v_pid;
-  u16 pre_a_pid;
-  u16 zone_code;
-  cas_adt_mg_maii_cfg_t mail_cfg;
-  CAS_LIB_TYPE cas_lib_type;
-  u8 zone_code_flag;
-  u8 internal_reset_flag;
-
-  u32 emm_0x84_systime;
-  u32 emm_0x85_systime;
-  u32 emm_0x87_systime;
-  u32 ecm_systime;
-}cas_adt_mg_priv_t;
-
-/*!
-  The ECM information should processed by CAS module
-  */
-typedef struct
-{
-/*!
-    The zone code should processed by ECM process
-    */
-  u16 zone_code;
-/*!
-    The video dmx channel id need to be descrambled
-    */
-  u16 prog_v_cid;
-/*!
-    The audio dmx channel id need to be descrambled
-    */
-  u16 prog_a_cid;
-}ecm_info_t;
-
-/*!
-  The store mail header format
-  */
-typedef struct
-{
-  	u8 subject[CAS_MAIL_SUBJECT_MAX_LEN];
-  	u8 sender[CAS_MAIL_FROM_MAX_LEN];
-	u8 creat_date[CAS_MAIL_DATE_MAX_LEN];
-        u16 body_len;
-	u8 mail_id;
-}cas_mail_header_store_t;
-
-/*!
-The operators info struct
-*/
-typedef struct
-{
-  	cas_mail_header_store_t  p_mail_head[CAS_EMAIL_STORE_MAX_NUM];
-  	u16 max_num;
-  	u16 reserve;
-	u8 has_read;
-}cas_mail_headers_store_t;
-
-/**
-  The msg need to store in nvram
-*/
-typedef struct
-{
-	cas_mail_body_t cas_mail_body[CAS_EMAIL_STORE_MAX_NUM];		        /* all mail bodys */
-  	u16 reserve;
-}cas_mail_bodys_store_t;
-
-/**
-  The mail format
-*/
-typedef struct
-{
-	cas_mail_headers_store_t cas_mail_headers;		/* mail headers */
-	cas_mail_bodys_store_t p_cas_mail_bodys;	        /* mail bodys    */
-}cas_mail_t;
-
-/**
-  Delete mail type
-*/
-typedef enum
-{
-	BY_INDEX,
-	ALL_MAIL
-}cas_del_mail_type_e;
-
-/**
-  Store mail/msg to mem result
-*/
-typedef enum
-{
-	RET_SUCCESS,
-        RET_FLUSH_FAILED,
-	RET_HAS_RECEIVED
-}cas_save_mail_ret_e;
-
-/**
-  Filter Struct
-*/
-typedef struct
-{
-        u8 Data[DMX_SECTION_FILTER_SIZE];
-        u8 Mask[DMX_SECTION_FILTER_SIZE];
-}filter_struct_t;
-
-/**
-  The OSD message format
-*/
-typedef struct
-{
-	u8 disp_mode;		                                                /* disp mode:0x21 up loop, 0x22 down loop  */
-	u8 disp_cnt;     		                                                /* disp repeat count  */
-	u8 reserved;
-	u8 cas_osd_data[CAS_OSD_MSG_DATA_MAX_LEN];		/* OSD message data */
-	BOOL has_read;
-}cas_osd_t;
-
-/**
-  The message format
-*/
-typedef struct
-{
-	cas_osd_t cas_osd_up;		                                    /* OSD struct Up LOOP      */
-	cas_osd_t cas_osd_dn;		                                    /* OSD struct Down LOOP */
-	u8 cas_msg_data[CAS_OSD_MSG_DATA_MAX_LEN];  /* message data */
-}cas_osd_msg_t;
 
 scard_device_t *p_g_smc_dev = NULL;
 os_sem_t *p_g_mg_port_sem = NULL;
@@ -264,40 +96,6 @@ static RET_CODE cas_adt_mg_ecm_resetFilterAll(void);
 static RET_CODE cas_adt_mg_emm_setFilter(u8 emm_Tid);
 static RET_CODE cas_adt_mg_emm_resetFilter(u8 emm_Tid);
 static int cas_adt_mg_internal_reset_card(void);
-
-BOOL get_vol_entitlement_from_ca(void)
-{
-	if(MG_Get_Card_Ready() == MG_TRUE)
-	{
-		if(MG_Get_RecentExpireDay() > 0)
-		{
-			OS_PRINTF("expireday = %x \n",MG_Get_RecentExpireDay());
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-	else
-	{
-		return FALSE;
-	}
-	
-	return FALSE;
-}
-
-void send_event_to_ui_from_authorization(u32 event)
-{
-	cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
-	if(event == 0)
-	{
-		OS_PRINTF("send enent fail!\n");
-		return;
-	}
-	cas_send_event(p_priv->slot, CAS_ID_ADT_MG, event, 0);
-	OS_PRINTF("send enent from authorization!\n");
-}
 
 static cas_dmx_chan_t *cas_adt_mg_search_free_channel(u8 type)
 {
@@ -775,7 +573,7 @@ static u32 parse_event(MG_STATUS result)
 	u8 emailbody[ADT_MG_CAS_MAIL_BODY_MAX_LEN];
 	cas_mail_header_store_t *p_email_header_format = NULL;
 	cas_mail_body_t *p_email_body_format = NULL;
-	cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+	cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
 	u8 *p_msg_data = NULL;
 
 	switch(result)
@@ -1168,7 +966,7 @@ static RET_CODE cas_adt_mg_init()
 {
 	static BOOL init_flag = FALSE;
 	u8 temp_buffer[CAS_CARD_SN_MAX_LEN + 1] = {0};
-	cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+	cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
 
 	if (init_flag)
 	{
@@ -1315,7 +1113,7 @@ static cas_save_mail_ret_e cas_adt_mg_save_new_mail(cas_mail_header_store_t *p_c
 static RET_CODE cas_adt_mg_card_reset(u32 slot, card_reset_info_t *p_info)
 {
   cas_adt_mg_priv_t *p_priv
-    = (cas_adt_mg_priv_t *)g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+    = (cas_adt_mg_priv_t *)g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
 //  u32 system_time_tick =0x00;
 #ifndef JAZZ_MG
   scard_config_t smc_cfg = {0};
@@ -1390,7 +1188,7 @@ static RET_CODE cas_adt_mg_card_reset(u32 slot, card_reset_info_t *p_info)
 static RET_CODE cas_adt_mg_card_remove()
 {
   cas_adt_mg_priv_t *p_priv
-    = (cas_adt_mg_priv_t *)g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+    = (cas_adt_mg_priv_t *)g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
   //u32 system_time_tick = 0x00;
 
   p_priv->card_status = SMC_CARD_REMOVE;
@@ -1406,14 +1204,14 @@ static RET_CODE cas_adt_mg_card_remove()
 RET_CODE cas_adt_mg_card_is_removed(void)
 {
   cas_adt_mg_priv_t *p_priv
-    = (cas_adt_mg_priv_t *)g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+    = (cas_adt_mg_priv_t *)g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    return (p_priv->card_status == SMC_CARD_REMOVE?SUCCESS:ERR_FAILURE);
 }
 
 void cas_adt_mg_set_reset_flag(void)
 {
     cas_adt_mg_priv_t *p_priv
-    = (cas_adt_mg_priv_t *)g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+    = (cas_adt_mg_priv_t *)g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
 
     p_priv->internal_reset_flag = 1;
     return;
@@ -1459,7 +1257,7 @@ static RET_CODE cas_adt_mg_identify(u16 ca_sys_id)
 
 static RET_CODE cas_adt_mg_resetFilterAll(void)
 {
-   cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+   cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    u8 i;
 
     for (i = 0; i < CAS_DMX_CHANNEL_COUNT; i ++)
@@ -1482,7 +1280,7 @@ static RET_CODE cas_adt_mg_resetFilterAll(void)
 
 static RET_CODE cas_adt_mg_ecm_setFilterAll(void)
 {
-   cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+   cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    cas_dmx_chan_t *p_chan = NULL;
    filter_struct_t ecmfilter;
 
@@ -1507,7 +1305,7 @@ static RET_CODE cas_adt_mg_ecm_setFilterAll(void)
 
 static RET_CODE cas_adt_mg_emm_setFilter(u8 emm_Tid)
 {
-   cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+   cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    cas_dmx_chan_t *p_chan = NULL;
    filter_struct_t emmfilter_0x84;
    filter_struct_t emmfilter_0x85;
@@ -1618,7 +1416,7 @@ static RET_CODE cas_adt_mg_emm_setFilter(u8 emm_Tid)
 
 static RET_CODE cas_adt_mg_emm_resetFilter(u8 emm_Tid)
 {
-   cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+   cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    u8 i;
 
     MG_CAS_LOCK(g_sem_mg_emmlock);
@@ -1654,7 +1452,7 @@ static RET_CODE cas_adt_mg_emm_resetFilter(u8 emm_Tid)
 
 static RET_CODE cas_adt_mg_ecm_resetFilterAll(void)
 {
-   cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+   cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
    u8 i;
 
 #if 0
@@ -1697,7 +1495,7 @@ static RET_CODE cas_adt_mg_ecm_resetFilterAll(void)
 
 RET_CODE cas_adt_mg_emm_process(u8 *p_emm_buf, u32 *p_result)
 {
-  cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+  cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
   MG_STATUS ret = 0;
   MG_U8 result;
   u16 counter = 0;
@@ -1808,7 +1606,7 @@ RET_CODE cas_adt_mg_emm_process(u8 *p_emm_buf, u32 *p_result)
 #define ZONE_CODE_INVALID (1)
 RET_CODE cas_adt_mg_ecm_process(u8 *p_ecm_buf, ecm_info_t *p_info, u32 *p_result)
 {
-    cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+    cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
     MG_STATUS result = 0;
     MG_U8 cw_changed = 0;
     MG_U8 prog_sta = 0;
@@ -1885,7 +1683,7 @@ RET_CODE cas_adt_mg_ecm_process(u8 *p_ecm_buf, ecm_info_t *p_info, u32 *p_result
 
 static RET_CODE cas_adt_mg_table_process(u32 t_id, u8 *p_buf, u32 *p_result)
 {
-  cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+  cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
   cas_pmt_t pmt = {0};
   cas_cat_t cat = {0};
   u32 i = 0;
@@ -1939,9 +1737,9 @@ static RET_CODE cas_adt_mg_table_process(u32 t_id, u8 *p_buf, u32 *p_result)
   else if(t_id == CAS_TID_NIT)
   {
     CAS_ADT_PRINTF(" cas_adt_mg_table_process---> CAS_TID_NIT\n");
-    memcpy(g_cas_priv->nit_data, p_buf, section_len);
-    g_cas_priv->nit_length = section_len;
-    network_id =  (((u16)(g_cas_priv->nit_data[3])) << 8) | (g_cas_priv->nit_data[4]);
+    memcpy(g_cas_priv.nit_data, p_buf, section_len);
+    g_cas_priv.nit_length = section_len;
+    network_id =  (((u16)(g_cas_priv.nit_data[3])) << 8) | (g_cas_priv.nit_data[4]);
     p_priv->zone_code = (network_id&0x00FF);
     p_priv->zone_code_flag = ZONE_CODE_VALID;
   }
@@ -1955,7 +1753,7 @@ static RET_CODE cas_adt_mg_table_process(u32 t_id, u8 *p_buf, u32 *p_result)
 
 static RET_CODE cas_adt_mg_io_ctrl(u32 cmd, void *param)
 {
-	cas_adt_mg_priv_t *p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv;
+	cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
 	MG_U8 ret = 0;
 	MG_U8 *p_buf = NULL, *p_temp = NULL;
 	MG_U8 data[2];
@@ -2388,25 +2186,26 @@ RET_CODE cas_adt_mg_attach_v42x(cas_module_cfg_t *p_cfg, u32 *p_cam_id)
   cas_adt_mg_priv_t *p_priv = NULL;
   RET_CODE ret = ERR_FAILURE;
   u32 i = 0;
-  g_cas_priv = cas_get_private_data();
+  cas_adapter_priv_t* temp = NULL;
+  temp = cas_get_private_data();
   
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].attached = 1;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].inited = 0;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.init
+  temp->cam_op[CAS_ID_ADT_MG].attached = 1;
+  temp->cam_op[CAS_ID_ADT_MG].inited = 0;
+  temp->cam_op[CAS_ID_ADT_MG].func.init
     = cas_adt_mg_init;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.deinit
+  temp->cam_op[CAS_ID_ADT_MG].func.deinit
     = cas_adt_mg_deinit;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.card_reset
+  temp->cam_op[CAS_ID_ADT_MG].func.card_reset
     = cas_adt_mg_card_reset;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.card_remove
+  temp->cam_op[CAS_ID_ADT_MG].func.card_remove
     = cas_adt_mg_card_remove;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.identify
+  temp->cam_op[CAS_ID_ADT_MG].func.identify
     = cas_adt_mg_identify;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.table_process
+  temp->cam_op[CAS_ID_ADT_MG].func.table_process
     = cas_adt_mg_table_process;
-  g_cas_priv->cam_op[CAS_ID_ADT_MG].func.io_ctrl
+  temp->cam_op[CAS_ID_ADT_MG].func.io_ctrl
     = cas_adt_mg_io_ctrl;
-  p_priv = g_cas_priv->cam_op[CAS_ID_ADT_MG].p_priv
+  p_priv = temp->cam_op[CAS_ID_ADT_MG].p_priv
     = mtos_malloc(sizeof(cas_adt_mg_priv_t));
   MT_ASSERT(NULL != p_priv);
 
@@ -2436,7 +2235,7 @@ RET_CODE cas_adt_mg_attach_v42x(cas_module_cfg_t *p_cfg, u32 *p_cam_id)
   MT_ASSERT(SUCCESS == ret);
   MT_ASSERT(TRUE == mtos_sem_create(&g_sem_mg_emmlock, TRUE));
   MT_ASSERT(TRUE == mtos_sem_create(&g_sem_mg_ecmlock, TRUE));
-  *p_cam_id = (u32)(&g_cas_priv->cam_op[CAS_ID_ADT_MG]);
+  *p_cam_id = (u32)(&temp->cam_op[CAS_ID_ADT_MG]);
   cas_adt_mg_init();
   return SUCCESS;
 }

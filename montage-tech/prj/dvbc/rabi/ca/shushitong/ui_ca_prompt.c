@@ -34,6 +34,7 @@ extern RET_CODE asc_to_dec(const u8 *p_ascstr, u32 *p_dec_number, u32 max_len);
 static prompt_type_t prompt_type;
 static cas_mail_headers_t mail_header;
 static u16 uni_str[CAS_MAIL_BODY_MAX_LEN + 1] = {0};
+extern u32 g_cas_id_flag;
 
 #ifdef WIN32
 static cas_mail_body_t mail_body_info;
@@ -43,7 +44,7 @@ void add_test_mail_body(void)
   mail_body_info.data[20] = 32;
   mail_body_info.data[21] = 13;
   mail_body_info.data[22] = 10;
- mail_body_info.data[23] = 228;
+  mail_body_info.data[23] = 228;
   mail_body_info.data[24] = 184;
   mail_body_info.data[25] = 173;
   mail_body_info.data[26] = 230;
@@ -61,7 +62,8 @@ void add_test_mail_body(void)
 u16 ca_prompt_root_keymap(u16 key);
 RET_CODE ca_prompt_root_proc(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
 RET_CODE email_body_text_proc(control_t *p_ctrl, u16 msg, u32 para1, u32 para2);
-u16 email_body_text_keymap(u16 key);  
+u16 email_body_text_keymap(u16 key); 
+
 static RET_CODE ca_prompt_email_set_content(control_t *p_cont, u16 index, cas_mail_headers_t *p_mail_header, 
   cas_mail_body_t *p_cas_mail_body)
 {
@@ -73,8 +75,7 @@ static RET_CODE ca_prompt_email_set_content(control_t *p_cont, u16 index, cas_ma
   //UI_PRINTF("ca_prompt_email_set_content p_mail_header->max_num=%d\n",p_mail_header->max_num);
   for(i = 0; i < p_mail_header->max_num; i++)
   {
-    if(p_mail_header->p_mail_head[i].new_email
-      && i != index)
+	if(p_mail_header->p_mail_head[i].new_email&& i != index)
       new_mail++;
   }
   
@@ -113,10 +114,12 @@ static RET_CODE on_ca_mail_update_body(control_t *p_cont, u16 msg, u32 para1, u3
   //UI_PRINTF("on_ca_mail_update_body p_prompt_type->index=%d p_mail_header->max_num=%d\n",prompt_type.index, mail_header.max_num);
 	if(para1 != SUCCESS)
 		return ERR_FAILURE;
-	ca_prompt_email_set_content(p_cont, (u16)prompt_type.index, 
-	    &mail_header, (cas_mail_body_t *)para2);
+	ca_prompt_email_set_content(p_cont, (u16)prompt_type.index, &mail_header, (cas_mail_body_t *)para2);
 	ctrl_paint_ctrl(p_cont, TRUE);
-
+    if(g_cas_id_flag  == CAS_ID_ADT_MG)
+    {
+		ui_ca_do_cmd(CAS_CMD_MAIL_CHANGE_STATUS, mail_header.p_mail_head[prompt_type.index].m_id, 0);
+	}
   return SUCCESS;
 }
   
@@ -141,6 +144,7 @@ RET_CODE open_ca_prompt(u32 para1, u32 para2)
 
   //p_cont = ui_comm_root_create_with_attr(ROOT_ID_CA_PROMPT,0,CA_PROMPT_X,CA_PROMPT_Y,CA_PROMPT_W,CA_PROMPT_H,OBJ_ATTR_ACTIVE);
   p_cont = ui_comm_right_root_create(ROOT_ID_CA_PROMPT, 0, OBJ_ATTR_ACTIVE, 0);
+	MT_ASSERT(NULL!=p_cont);
   ctrl_set_keymap(p_cont, ca_prompt_root_keymap);
   ctrl_set_proc(p_cont, ca_prompt_root_proc);
 
@@ -176,7 +180,14 @@ RET_CODE open_ca_prompt(u32 para1, u32 para2)
   text_set_font_style(p_ctrl, FSI_WHITE, FSI_WHITE, FSI_WHITE);
   text_set_align_type(p_ctrl, STL_CENTER | STL_VCENTER);
   text_set_content_type(p_ctrl, TEXT_STRTYPE_STRID);
-  text_set_content_by_strid(p_ctrl, IDS_CA_EMAIL_RECEIVE_TIME);
+  if(g_cas_id_flag  == CAS_ID_ADT_MG)
+  {
+	text_set_content_by_strid(p_ctrl, IDS_CA_SENDER);
+  }
+  else
+  {
+  	text_set_content_by_strid(p_ctrl, IDS_CA_EMAIL_RECEIVE_TIME);
+  }
 
   //message sender
   p_ctrl = ctrl_create_ctrl(CTRL_TEXT, (u8)(IDC_MESSAGE_RECEIVE_TIME_CONTENT),
@@ -231,53 +242,43 @@ RET_CODE open_ca_prompt(u32 para1, u32 para2)
   memcpy(&mail_header, (cas_mail_headers_t *)para2, sizeof(cas_mail_headers_t));
 
   p_ctrl = ctrl_get_child_by_id(p_frm, IDC_MESSAGE_TITLE);
+  MT_ASSERT(NULL!=p_ctrl);
   gb2312_to_unicode((u8*)mail_header.p_mail_head[prompt_type.index].subject, CAS_MAIL_SUBJECT_MAX_LEN, 
                                                                         uni_str, CAS_MAIL_SUBJECT_MAX_LEN +  1);
   text_set_content_by_unistr(p_ctrl, uni_str);
   
   p_ctrl = ctrl_get_child_by_id(p_frm, IDC_MESSAGE_RECEIVE_TIME_CONTENT);
+  MT_ASSERT(NULL!=p_ctrl);
+  if(g_cas_id_flag  == CAS_ID_ADT_MG)
+  {
+	gb2312_to_unicode(mail_header.p_mail_head[prompt_type.index].sender, 80, uni_str, 40);
+	text_set_content_by_unistr(p_ctrl, uni_str);
+  }
+  else
+  {
+	sprintf((char*)asc_str, "%04d.%02d.%02d %02d:%02d:%02d", 
+	mail_header.p_mail_head[prompt_type.index].send_date[0] * 100 + 
+	mail_header.p_mail_head[prompt_type.index].send_date[1],
+	mail_header.p_mail_head[prompt_type.index].send_date[2],
+	mail_header.p_mail_head[prompt_type.index].send_date[3],
+	mail_header.p_mail_head[prompt_type.index].send_date[4],
+	mail_header.p_mail_head[prompt_type.index].send_date[5],
+	mail_header.p_mail_head[prompt_type.index].send_date[6]);
 
-  #if 0
-  s_ca_time.year = mail_header.p_mail_head[prompt_type.index].creat_date[0] * 100 + 
-  								mail_header.p_mail_head[prompt_type.index].creat_date[1];
-  s_ca_time.month =  mail_header.p_mail_head[prompt_type.index].creat_date[2];
-  s_ca_time.day = mail_header.p_mail_head[prompt_type.index].creat_date[3];
-  sprintf((char *)asc_str,"%02x", mail_header.p_mail_head[prompt_type.index].creat_date[4]);
-  asc_to_dec(asc_str, &tmp_value, 2);
-  s_ca_time.hour = (u8)tmp_value;
-  sprintf((char *)asc_str,"%02x", mail_header.p_mail_head[prompt_type.index].creat_date[5]);
-  asc_to_dec(asc_str, &tmp_value, 2);
-  s_ca_time.minute = (u8)tmp_value;
-  sprintf((char *)asc_str,"%02x", mail_header.p_mail_head[prompt_type.index].creat_date[6]);
-  asc_to_dec(asc_str, &tmp_value, 2);
-  s_ca_time.second= (u8)tmp_value;
-
-  time_to_local(&s_ca_time, &s_local_time);
-  sprintf((char *)asc_str,"%04d/%02d/%02d %02d:%02d:%02d", 
-            s_local_time.year, s_local_time.month, 
-            s_local_time.day, s_local_time.hour, s_local_time.minute,s_local_time.second);
-  //str_asc2uni(asc_str, uni_str);
-#else
-  sprintf((char*)asc_str, "%04d.%02d.%02d %02d:%02d:%02d", 
-  mail_header.p_mail_head[prompt_type.index].send_date[0] * 100 + 
-  mail_header.p_mail_head[prompt_type.index].send_date[1],
-  mail_header.p_mail_head[prompt_type.index].send_date[2],
-  mail_header.p_mail_head[prompt_type.index].send_date[3],
-  mail_header.p_mail_head[prompt_type.index].send_date[4],
-  mail_header.p_mail_head[prompt_type.index].send_date[5],
-  mail_header.p_mail_head[prompt_type.index].send_date[6]);
-#endif
- UI_PRINTF("@@@@@ index:%d  %04d.%02d.%02d-%02d:%02d:%02d\n", prompt_type.index,
-  mail_header.p_mail_head[prompt_type.index].send_date[0] *100 + 
-  mail_header.p_mail_head[prompt_type.index].send_date[1],
-  mail_header.p_mail_head[prompt_type.index].send_date[2],
-  mail_header.p_mail_head[prompt_type.index].send_date[3],
-  mail_header.p_mail_head[prompt_type.index].send_date[4],
-  mail_header.p_mail_head[prompt_type.index].send_date[5],
-  mail_header.p_mail_head[prompt_type.index].send_date[6]);
-  text_set_content_by_ascstr(p_ctrl, (u8*)asc_str);
+	UI_PRINTF("@@@@@ index:%d  %04d.%02d.%02d-%02d:%02d:%02d\n", prompt_type.index,
+	mail_header.p_mail_head[prompt_type.index].send_date[0] *100 + 
+	mail_header.p_mail_head[prompt_type.index].send_date[1],
+	mail_header.p_mail_head[prompt_type.index].send_date[2],
+	mail_header.p_mail_head[prompt_type.index].send_date[3],
+	mail_header.p_mail_head[prompt_type.index].send_date[4],
+	mail_header.p_mail_head[prompt_type.index].send_date[5],
+	mail_header.p_mail_head[prompt_type.index].send_date[6]);
+	text_set_content_by_ascstr(p_ctrl, (u8*)asc_str);
+  }
+ 
   
   p_ctrl = ctrl_get_child_by_id(p_frm, IDC_MESSAGE_NEW_CONTENT);
+	MT_ASSERT(NULL!=p_ctrl);
 
   if(mail_header.p_mail_head[prompt_type.index].new_email)
     text_set_content_by_strid(p_ctrl, IDS_YES);
@@ -285,6 +286,7 @@ RET_CODE open_ca_prompt(u32 para1, u32 para2)
     text_set_content_by_strid(p_ctrl, IDS_NO);
   
   p_ctrl = ctrl_get_child_by_id(p_frm, IDC_MESSAGE_IMPORT_CONTENT);
+	MT_ASSERT(NULL!=p_ctrl);
 
   if(mail_header.p_mail_head[prompt_type.index].priority)
     text_set_content_by_strid(p_ctrl, IDS_YES);
@@ -302,15 +304,10 @@ RET_CODE open_ca_prompt(u32 para1, u32 para2)
   return SUCCESS;
 }
 
-static RET_CODE on_ca_prompt_exit(control_t *p_cont,
-                                 u16 msg,
-                                 u32 para1,
-                                 u32 para2)
+static RET_CODE on_ca_prompt_exit(control_t *p_cont,u16 msg,u32 para1,u32 para2)
 {
-#ifndef WIN32
-  ui_ca_do_cmd(CAS_CMD_MAIL_HEADER_GET, 0, 0);
-#endif
-  return ERR_NOFEATURE;
+	ui_ca_do_cmd(CAS_CMD_MAIL_HEADER_GET, 0, 0);
+	return ERR_NOFEATURE;
 }
 
 BEGIN_KEYMAP(ca_prompt_root_keymap, ui_comm_root_keymap)

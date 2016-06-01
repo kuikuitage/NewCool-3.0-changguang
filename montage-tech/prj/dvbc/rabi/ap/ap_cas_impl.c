@@ -76,7 +76,7 @@ static u32 get_msgq_timeout(class_handle_t handle)
 cas_policy_t* construct_cas_policy(void)
 {
   cas_policy_t *p_policy = mtos_malloc(sizeof(cas_policy_t));
-
+ 
   MT_ASSERT(p_policy != NULL);
 
   memset(p_policy, 0, sizeof(cas_policy_t));

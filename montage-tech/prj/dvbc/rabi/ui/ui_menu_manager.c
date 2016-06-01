@@ -133,10 +133,10 @@
 #include "ui_ca_public.h"
 #include "ui_new_mail.h"
 #endif
-
 #ifdef WIN32
 #include "ui_ca_card_info.h"
-#include "ui_email_mess.h"
+#include "ui_email_mess_divi.h"
+#include "ui_email_mess_mg.h"
 #include "ui_ca_prompt.h"
 #include "ui_ca_entitle_info.h"
 #endif
@@ -198,6 +198,26 @@ static u32 totle_menu_cnk = 0;
 #if 0
 static RET_CODE ui_open_netmedia(u32 para1, u32 para2);
 #endif
+extern u32 g_cas_id_flag;
+RET_CODE open_email_mess(u32 para1, u32 para2)
+{
+#ifdef WIN32
+	if(g_cas_id_flag  == CAS_ID_ADT_MG)
+	{
+		return open_email_mess_MG(para1,para2);
+	}
+	else
+	{
+		return open_email_mess_DIVI(para1,para2);
+	}
+#endif
+	return SUCCESS;
+}
+
+
+
+
+
 
 static const menu_attr_t public_menu_attr[] =
 {

@@ -14,6 +14,9 @@ static BOOL g_is_new_mail = FALSE;
 static BOOL g_is_full_mail = FALSE;
 static BOOL is_pic_flash = FALSE;
 
+extern u32 g_cas_id_flag; 
+
+
 enum control_id
 {
   IDC_EMAIL_ICON = 1,
@@ -46,26 +49,48 @@ void ui_set_full_mail(BOOL is_full_mail)
 RET_CODE open_ui_new_mail(u32 para1, u32 para2)
 {
   control_t *p_cont, *p_icon;
+  if(g_is_full_mail == CAS_ID_ADT_MG)
+  {
+	if(fw_find_root_by_id(ROOT_ID_NEW_MAIL) != NULL)
+	{
+		close_new_mail();
+	}
 
-  if((fw_get_focus_id() != ROOT_ID_BACKGROUND)
-  		&& (fw_get_focus_id() != ROOT_ID_PROG_BAR))
-  {
-	return 0;
+	if(ui_is_fullscreen_menu(fw_get_focus_id()) == FALSE)
+	{
+		return SUCCESS;
+	}
+
+	p_cont = fw_create_mainwin(ROOT_ID_NEW_MAIL,
+	                         NEW_MAIL_CONT_FULL_X, 
+	                         NEW_MAIL_CONT_FULL_Y_MG, 
+	                         NEW_MAIL_CONT_FULL_W, 
+	                         NEW_MAIL_CONT_FULL_H,
+	                         ROOT_ID_INVALID, 0,
+	                         OBJ_ATTR_INACTIVE, 0);
   }
-  
-  // check for close
-  if(fw_find_root_by_id(ROOT_ID_NEW_MAIL) != NULL)
+  else
   {
-    close_new_mail();
+	  if((fw_get_focus_id() != ROOT_ID_BACKGROUND)
+	  		&& (fw_get_focus_id() != ROOT_ID_PROG_BAR))
+	  {
+		return 0;
+	  }
+	  
+	  // check for close
+	  if(fw_find_root_by_id(ROOT_ID_NEW_MAIL) != NULL)
+	  {
+	    close_new_mail();
+	  }
+	  
+	  p_cont = fw_create_mainwin(ROOT_ID_NEW_MAIL,
+	                             NEW_MAIL_CONT_FULL_X, 
+	                             NEW_MAIL_CONT_FULL_Y_DIVI, 
+	                             NEW_MAIL_CONT_FULL_W, 
+	                             NEW_MAIL_CONT_FULL_H,
+	                             ROOT_ID_INVALID, 0,
+	                             OBJ_ATTR_INACTIVE, 0);
   }
-  
-  p_cont = fw_create_mainwin(ROOT_ID_NEW_MAIL,
-                             NEW_MAIL_CONT_FULL_X, 
-                             NEW_MAIL_CONT_FULL_Y, 
-                             NEW_MAIL_CONT_FULL_W, 
-                             NEW_MAIL_CONT_FULL_H,
-                             ROOT_ID_INVALID, 0,
-                             OBJ_ATTR_INACTIVE, 0);
   if(p_cont == NULL)
   {
     return ERR_FAILURE;

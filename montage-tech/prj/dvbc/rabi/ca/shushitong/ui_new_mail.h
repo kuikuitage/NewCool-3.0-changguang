@@ -9,7 +9,9 @@
 
 /* coordinate */
 #define NEW_MAIL_CONT_FULL_X			100
-#define NEW_MAIL_CONT_FULL_Y			100
+//#define NEW_MAIL_CONT_FULL_Y			
+#define NEW_MAIL_CONT_FULL_Y_DIVI			100
+#define NEW_MAIL_CONT_FULL_Y_MG			128//60
 #define NEW_MAIL_CONT_FULL_W			60
 #define NEW_MAIL_CONT_FULL_H			60
 

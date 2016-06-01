@@ -2449,7 +2449,8 @@ static void drv_flash_protect()
   #ifdef FLASH_16M
   ap_charsto_set_protect(PRT_LOWER_1_4);
   #else
-  ap_charsto_set_protect(PRT_LOWER_7_8);
+  ap_charsto_set_protect(PRT_UNPROT_ALL);
+  //ap_charsto_set_protect(PRT_LOWER_7_8);
   #endif
 }
 

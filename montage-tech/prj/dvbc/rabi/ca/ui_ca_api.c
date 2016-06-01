@@ -9,6 +9,7 @@
 #include "cas_manager.h"
 
 #ifdef ENABLE_CA
+
 u16 ui_ca_evtmap(u32 event);
 
 

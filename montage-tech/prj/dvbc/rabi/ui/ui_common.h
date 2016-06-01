@@ -282,6 +282,7 @@
 //#include "ui_dlna_external.h"
 
 // resource
+
 #include "bmp_id.h"
 #include "str_id.h"
 #include "language_id.h"

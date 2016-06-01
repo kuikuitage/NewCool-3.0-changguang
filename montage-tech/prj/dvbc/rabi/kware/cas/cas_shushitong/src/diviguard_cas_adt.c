@@ -32,6 +32,8 @@
 
 #include "DiviguardCa.h"
 #include "diviguard_cas_include.h"
+#include "mgdef_v42x.h"
+#include "mg_cas_include.h"
 
 #include "nim.h"
 #include "smc_op.h"
@@ -47,6 +49,7 @@
 #else
 #define CAS_DIVI_ADT_PRINTF DUMMY_PRINTF
 #endif
+extern u32 g_cas_id_flag;
 
 
 BOOL s_divi_entitle_flag = 0; //0:entitle  1:no entitle
@@ -66,42 +69,65 @@ extern unsigned long _mktime (unsigned int year, unsigned int mon,
 
 BOOL get_vol_entitlement_from_ca(void)
 {
-	u8 uIndex = 0;
-    PackageInfo Package = {0,};
-	u32 curTime, expTime;
-	utc_time_t utc_time = {0};
-	time_set_t p_set={{0}};
-
-	if(CUSTOMER_DTMB_CHANGSHA_HHT == CUSTOMER_ID)
+	
+	if(CAS_ID_ADT_MG == g_cas_id_flag)
 	{
-		if(DIVI_GetProductOneIs() && (divi_get_card_status() == DIVI_CA_CARD_INSERT))
-			return TRUE;
+		if(MG_Get_Card_Ready() == MG_TRUE)
+		{
+			if(MG_Get_RecentExpireDay() > 0)
+			{
+				OS_PRINTF("expireday = %x \n",MG_Get_RecentExpireDay());
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
 		else
+		{
 			return FALSE;
+		}
 	}
 	else
 	{
-		if(DIVI_GetSMCEntitleInfo(&Package) != 0x02 )
-	    {
-	        DEBUG(DBG,INFO,"DIVI_GetSMCEntitleInfo fail \n");
-	        return FALSE;
-	    }
-		
-		sys_status_get_time(&p_set);
-		time_get(&utc_time, p_set.gmt_usage);
-		curTime = _mktime(utc_time.year,utc_time.month,utc_time.day,0,0,0);
-		DEBUG(DBG,INFO, "utc_time.year[%d]	utc_time.month[%d] utc_time.day[%d] \n",utc_time.year,utc_time.month,utc_time.day);
+		u8 uIndex = 0;
+	    PackageInfo Package = {0,};
+		u32 curTime, expTime;
+		utc_time_t utc_time = {0};
+		time_set_t p_set={{0}};
 
-	    DEBUG(DBG,INFO,"Package Count = %d\n",Package.Package_Count);
-	    for(uIndex = 0; uIndex < Package.Package_Count; uIndex++)
-	    {
-	    	expTime = _mktime(Package.PackageInfo[uIndex].EndYear,Package.PackageInfo[uIndex].EndMonth,Package.PackageInfo[uIndex].EndDate,0,0,0);
-			DEBUG(DBG,INFO,"curTime = %x expTime = %x \n",curTime,expTime);
-			DEBUG(DBG,INFO,"year[%d] month[%d] day[%d]\n",Package.PackageInfo[uIndex].EndYear,Package.PackageInfo[uIndex].EndMonth,Package.PackageInfo[uIndex].EndDate);
-
-			if(expTime >= curTime)
+		if(CUSTOMER_DTMB_CHANGSHA_HHT == CUSTOMER_ID)
+		{
+			if(DIVI_GetProductOneIs() && (divi_get_card_status() == DIVI_CA_CARD_INSERT))
 				return TRUE;
-	    }
+			else
+				return FALSE;
+		}
+		else
+		{
+			if(DIVI_GetSMCEntitleInfo(&Package) != 0x02 )
+		    {
+		        DEBUG(DBG,INFO,"DIVI_GetSMCEntitleInfo fail \n");
+		        return FALSE;
+		    }
+			
+			sys_status_get_time(&p_set);
+			time_get(&utc_time, p_set.gmt_usage);
+			curTime = _mktime(utc_time.year,utc_time.month,utc_time.day,0,0,0);
+			DEBUG(DBG,INFO, "utc_time.year[%d]	utc_time.month[%d] utc_time.day[%d] \n",utc_time.year,utc_time.month,utc_time.day);
+
+		    DEBUG(DBG,INFO,"Package Count = %d\n",Package.Package_Count);
+		    for(uIndex = 0; uIndex < Package.Package_Count; uIndex++)
+		    {
+		    	expTime = _mktime(Package.PackageInfo[uIndex].EndYear,Package.PackageInfo[uIndex].EndMonth,Package.PackageInfo[uIndex].EndDate,0,0,0);
+				DEBUG(DBG,INFO,"curTime = %x expTime = %x \n",curTime,expTime);
+				DEBUG(DBG,INFO,"year[%d] month[%d] day[%d]\n",Package.PackageInfo[uIndex].EndYear,Package.PackageInfo[uIndex].EndMonth,Package.PackageInfo[uIndex].EndDate);
+
+				if(expTime >= curTime)
+					return TRUE;
+		    }
+		}
 	}
 	return FALSE;
 }
@@ -135,14 +161,22 @@ BOOL get_card_reset_finsh(void)
 
 void send_event_to_ui_from_authorization(u32 event)
 {
-	cas_divi_priv_t *p_priv = (cas_divi_priv_t *)g_cas_priv.cam_op[CAS_ID_DIVI].p_priv;
-
 	if(event == 0)
 	{
-		DEBUG(DBG,INFO, "send enent fail!\n");
+		OS_PRINTF("send enent fail!\n");
 		return;
 	}
-	cas_send_event(p_priv->slot, CAS_ID_DIVI, event, 0);
+	if(CAS_ID_ADT_MG == g_cas_id_flag)
+	{
+		cas_adt_mg_priv_t *p_priv = g_cas_priv.cam_op[CAS_ID_ADT_MG].p_priv;
+		cas_send_event(p_priv->slot, CAS_ID_ADT_MG, event, 0);
+//		OS_PRINTF("send enent from authorization!\n");
+	}
+	else
+	{
+		cas_divi_priv_t *p_priv = (cas_divi_priv_t *)g_cas_priv.cam_op[CAS_ID_DIVI].p_priv;
+		cas_send_event(p_priv->slot, CAS_ID_DIVI, event, 0);
+	}
 	DEBUG(DBG,INFO, "send enent from authorization!\n");
 }
 
